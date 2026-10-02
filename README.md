@@ -5,7 +5,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/DHNSHYDV/privacy-display?color=blue&label=Latest%20Version)](https://github.com/DHNSHYDV/privacy-display/releases/latest)
 [![License](https://img.shields.io/badge/License-MIT-orange.svg)](LICENSE)
 
-A smart privacy screen utility for Android that automatically obscures your display with **100% opaque, corner-to-corner frosted glass** using **hardware tilt sensors** and **on-device selfie camera snooper detection** whenever someone looks over your shoulder or tilts your phone.
+A clean, autonomous privacy utility for Android that automatically obscures your display with **100% opaque, corner-to-corner frosted glass** whenever someone looks over your shoulder.
 
 Engineered natively for **Samsung One UI 7 (Galaxy Note 10+)**, **Google Pixel**, and all modern Android devices.
 
@@ -17,51 +17,50 @@ Get the latest installable APKs directly from the **[Releases Page](https://gith
 
 | Version | Download | Status | Highlights |
 | :--- | :--- | :--- | :--- |
-| **v1.2.0** | [**Download APK (v1.2.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.2.0/PrivacyGuard-v1.2.0.apk) | **Latest** | **On-Device Camera Snooper Guard** (Google ML Kit Face Detection) + Dual Trigger Controls |
-| **v1.1.0** | [**Download APK (v1.1.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.1.0/PrivacyGuard-v1.1.0.apk) | Stable | 6 randomized 4K frosted glass textures + 1-Tap Quick Settings panel addition |
-| **v1.0.0** | [**Download APK (v1.0.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.0.0/PrivacyGuard-v1.0.apk) | Stable | Initial release with core tilt engine & One UI 7 QS tile |
+| **v1.3.0** | [**Download APK (v1.3.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.3.0/PrivacyGuard-v1.3.0.apk) | **Latest** | **Pure Face Snooper Guard** (removed tilt sensor) + Full Camera On/Off control directly from Quick Settings tile |
+| **v1.2.0** | [**Download APK (v1.2.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.2.0/PrivacyGuard-v1.2.0.apk) | Stable | On-device Google ML Kit Face Detection pipeline |
+| **v1.1.0** | [**Download APK (v1.1.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.1.0/PrivacyGuard-v1.1.0.apk) | Stable | 6 randomized 4K frosted glass textures + 1-Tap QS panel addition |
+| **v1.0.0** | [**Download APK (v1.0.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.0.0/PrivacyGuard-v1.0.apk) | Stable | Initial release |
 
 ---
 
-## 🔒 Dual-Layer Privacy Protection
+## 🔒 How It Works (Pure Face Snooper Guard)
 
-Privacy Guard gives you two complementary, battle-tested privacy mechanisms:
+No awkward wrist tilts or sensor gimmicks. You hold your phone naturally and read comfortably:
 
 ```
-+-------------------------------------------------------------------------+
-|                              PRIVACY GUARD                              |
-+------------------------------------+------------------------------------+
-|         1. TILT WRIST FLICK        |      2. CAMERA SNOOPER GUARD       |
-+------------------------------------+------------------------------------+
-| Triggers when the phone moves past | Triggers when the front camera     |
-| a set angle (e.g. ±22°).           | detects >1 face looking at screen. |
-|                                    |                                    |
-| • Instant reflex hide              | • Read normally while holding      |
-| • No screen lock delay             |   phone straight at 0°             |
-| • Anti-snatch protection           | • On-device Google ML Kit (offline)|
-| • Zero battery consumption         | • Throttled at 2.5 FPS for low heat|
-+------------------------------------+------------------------------------+
-                                     |
-                                     v
-                 [ 100% OPAQUE FULL-BLEED FROSTED GLASS ]
-                 - Covers navigation bar, cutout, & corners
-                 - Randomizes across 6 realistic 4K textures
+[ Quick Settings Shade ]  ---> Tap "Snooper Guard" Tile
+                                          |
+                              Camera turns ON in background
+                                          |
+                         (CameraX @ ~3 FPS, 360p Low-Power)
+                                          |
+                             Google ML Kit Face Detection
+                                          |
+                              Faces > 1 Detected?
+                              /                 \
+                           YES                   NO
+                            |                     |
+                            v                     v
+                 [ Frosted Glass Active ]    [ Clear Screen ]
+                 - 100% Opaque               - Read normally
+                 - Covers nav bar & cutout   - Zero distortion
+                 - Onlooker sees frosted ice
 ```
+
+When you are done, tap the Quick Settings tile again: the service stops, the front camera immediately powers down, and the green dot disappears.
 
 ---
 
 ## ✨ Key Features
 
-* **AI Snooper Guard (Google ML Kit Face Detection)**:
-  * Reads the front camera in real time using a battery-optimized background pipeline (throttled to ~2.5 FPS).
-  * If a bystander looks over your shoulder, the phone detects the secondary face and immediately covers your screen.
-  * When the onlooker looks away or walks off, your screen unlocks instantly.
-* **Panic Wrist-Flick (Hardware Tilt Sensor Fusion)**:
-  * Uses high-precision `Sensor.TYPE_ROTATION_VECTOR` with low-pass exponential filtering and hysteresis.
-  * Flick your wrist slightly away to hide your display without pressing power or locking yourself out.
-* **One UI 7 & Pixel Quick Settings Tile**:
-  * Toggled directly from the pull-down Quick Settings shade (`TileService`).
-  * Includes a **1-Tap Quick Settings setup button** that triggers Android 13+ native tile addition without manual dragging.
+* **100% Autonomous Quick Settings Control**:
+  * Tap the tile once $\to$ camera powers up and starts guarding.
+  * Tap the tile again $\to$ camera powers down immediately and hardware is released.
+  * You never need to open the app after granting initial permissions.
+* **On-Device Google ML Kit Face Detection**:
+  * Detects secondary onlookers glancing at your phone.
+  * Throttled to ~3 FPS at 360p resolution for negligible battery and zero heating.
 * **100% Hardware-Level Opacity**:
   * Uses `PixelFormat.OPAQUE` via Android's `WindowManager` to completely eliminate GPU alpha blending.
   * Zero see-through, zero text bleed, and absolute privacy.
@@ -81,14 +80,14 @@ Privacy Guard gives you two complementary, battle-tested privacy mechanisms:
 
 ## 📲 How to Install & Setup
 
-1. **Download**: Download [**PrivacyGuard-v1.2.0.apk**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.2.0/PrivacyGuard-v1.2.0.apk) onto your phone.
+1. **Download**: Download [**PrivacyGuard-v1.3.0.apk**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.3.0/PrivacyGuard-v1.3.0.apk) onto your phone.
 2. **Install**: Tap the downloaded file to install. If prompted by Android, tap **"Allow from this source"** to enable sideloading.
-3. **Grant Permissions**:
+3. **Grant Permissions (One time only)**:
    * **Overlay Permission**: Tap "Grant Overlay Permission" (allow "Display over other apps").
    * **Camera Permission**: Tap "Grant Camera Permission" (used strictly on-device for snooper detection).
 4. **Add to Quick Settings**:
    * Tap **"Add to Quick Settings Panel"** inside the app $\to$ tap **Add** on the system prompt.
-5. **Ready**: Toggle Privacy Guard anytime from your Quick Settings!
+5. **Control from QS Shade**: Pull down Quick Settings anytime to turn Snooper Guard ON or OFF!
 
 ---
 
