@@ -17,7 +17,8 @@ Get the latest installable APKs directly from the **[Releases Page](https://gith
 
 | Version | Download | Status | Highlights |
 | :--- | :--- | :--- | :--- |
-| **v1.3.0** | [**Download APK (v1.3.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.3.0/PrivacyGuard-v1.3.0.apk) | **Latest** | **Pure Face Snooper Guard** (removed tilt sensor) + Full Camera On/Off control directly from Quick Settings tile |
+| **v1.3.1** | [**Download APK (v1.3.1)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.3.1/PrivacyGuard-v1.3.1.apk) | **Latest** | **Zero-Flicker QS Trampoline**: Works 100% reliably even when the app is completely closed/killed; eliminates Android 14 FGS camera crash |
+| **v1.3.0** | [**Download APK (v1.3.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.3.0/PrivacyGuard-v1.3.0.apk) | Stable | Pure Face Snooper Guard (removed tilt sensor) + Full Camera On/Off control from Quick Settings |
 | **v1.2.0** | [**Download APK (v1.2.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.2.0/PrivacyGuard-v1.2.0.apk) | Stable | On-device Google ML Kit Face Detection pipeline |
 | **v1.1.0** | [**Download APK (v1.1.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.1.0/PrivacyGuard-v1.1.0.apk) | Stable | 6 randomized 4K frosted glass textures + 1-Tap QS panel addition |
 | **v1.0.0** | [**Download APK (v1.0.0)**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.0.0/PrivacyGuard-v1.0.apk) | Stable | Initial release |
@@ -80,7 +81,7 @@ When you are done, tap the Quick Settings tile again: the service stops, the fro
 
 ## 📲 How to Install & Setup
 
-1. **Download**: Download [**PrivacyGuard-v1.3.0.apk**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.3.0/PrivacyGuard-v1.3.0.apk) onto your phone.
+1. **Download**: Download [**PrivacyGuard-v1.3.1.apk**](https://github.com/DHNSHYDV/privacy-display/releases/download/v1.3.1/PrivacyGuard-v1.3.1.apk) onto your phone.
 2. **Install**: Tap the downloaded file to install. If prompted by Android, tap **"Allow from this source"** to enable sideloading.
 3. **Grant Permissions (One time only)**:
    * **Overlay Permission**: Tap "Grant Overlay Permission" (allow "Display over other apps").
